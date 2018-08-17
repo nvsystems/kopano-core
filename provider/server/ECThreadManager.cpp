@@ -87,11 +87,9 @@ static string GetSoapError(int err)
 }
 
 ECWorkerThread::ECWorkerThread(ECThreadManager *lpManager,
-    ECDispatcher *lpDispatcher, bool bDoNotStart)
+    ECDispatcher *lpDispatcher, bool bDoNotStart) :
+	m_lpManager(lpManager), m_lpDispatcher(lpDispatcher)
 {
-	m_lpManager = lpManager;
-	m_lpDispatcher = lpDispatcher;
-
 	if (bDoNotStart) {
 		memset(&m_thread, 0, sizeof(m_thread));
 		return;
